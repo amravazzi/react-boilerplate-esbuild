@@ -35,6 +35,12 @@ So to see the app working, you should run it in an HTTP server, which is already
 npm run serve
 ```
 
+then build the project
+
+```sh
+npm run build:dev
+```
+
 and go to `http://localhost:5000` and check it out!
 
 ### Building the app
