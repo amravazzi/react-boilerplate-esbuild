@@ -1,35 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLS } from "../../utils/local-storage";
 
 function Locales() {
-    const { t, i18n } = useTranslation();
+  const { lsSet } = useLS();
+  const { t, i18n } = useTranslation();
 
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
+  useEffect(() => lsSet("lang", i18n.language));
 
-    return (
-      <>
-        <h1>{t("welcome_message")}</h1>
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
-        <span>{t("change_lang")}: </span>
-        <button
-          type="button"
-          onClick={() => changeLanguage("pt")}
-          disabled={i18n.language === "pt"}
-        >
-          Português do Brasil
-        </button>
+  return (
+    <>
+      <h1>{t("welcome_message")}</h1>
 
-        <button
-          type="button"
-          onClick={() => changeLanguage("en")}
-          disabled={i18n.language === "en"}
-        >
-          English
-        </button>
-      </>
-    );
+      <span>{t("change_lang")}: </span>
+      <button
+        type="button"
+        onClick={() => changeLanguage("pt")}
+        disabled={i18n.language === "pt"}
+      >
+        Português do Brasil
+      </button>
+
+      <button
+        type="button"
+        onClick={() => changeLanguage("en")}
+        disabled={i18n.language === "en"}
+      >
+        English
+      </button>
+    </>
+  );
 }
 
 export { Locales };
