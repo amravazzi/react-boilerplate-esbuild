@@ -1,17 +1,17 @@
 import React from "react";
 import { string, object } from "prop-types";
 
-function Text({ content, ...rest }) {
+function Text({ children, ...rest }) {
   return (
     <>
-      <p {...rest}>{content}</p>
+      <h1 {...rest}>{children}</h1>
     </>
   );
 }
 
 Text.propTypes = {
-  content: string.isRequired,
-  rest: object
+  children: string.isRequired,
+  rest: object,
 };
 
 export { Text };

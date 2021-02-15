@@ -1,16 +1,20 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Text } from "../../components/text";
+import { useLS } from "../../utils/local-storage";
 
 function Locales() {
     const { t, i18n } = useTranslation();
+    const { lsSet } = useLS();
 
-    const changeLanguage = (lng) => {
+    function changeLanguage(lng) {
       i18n.changeLanguage(lng);
+      lsSet("lang", lng);
     };
 
     return (
       <>
-        <h1>{t("welcome_message")}</h1>
+        <Text>{t("welcome_message")}</Text>
 
         <span>{t("change_lang")}: </span>
         <button
